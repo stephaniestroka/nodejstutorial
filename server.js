@@ -1,25 +1,21 @@
 'use strict';
 
-var http = require('http');
-var fs = require('fs');
-var url = require('url');
+const messages = require('./api/messages');
+const express = require('express');
+const bodyParser = require('body-parser')
 
-function returnFile(res, filename) {
-    fs.readFile(filename, function(err, data) {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(data);
-        res.end();
-    });
-}
+const app = express();
 
-http.createServer(function (req, res) {
-    var q = url.parse(req.url, true);
-    var filename = "." + q.pathname;
-    console.log("Looking for " + filename);
-    
-    if (!fs.existsSync(filename) || !fs.lstatSync(filename).isFile()) {
-        returnFile(res, 'index.html');
-    } else {
-        returnFile(res, filename);
-    }
-}).listen(8080);
+app.use(express.static('public'))
+
+app.get('/api/messages', function (req, res) {
+    res.send('[' + messages.getMessages() + ']')
+})
+
+app.use(bodyParser.json());
+app.post("/api/messages", function (req, res) {
+    messages.addMessage(req.body);
+    res.sendStatus(200);
+});
+
+app.listen(8080, () => console.log('Example app listening on port 8080!'))

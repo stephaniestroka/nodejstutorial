@@ -1,0 +1,5 @@
+{ "name" : "Steffi", "message" : "Hello World!" }
+,
+{"name":"Kaspar","message":"Hello World 2!"},
+{"name":"Mike","message":"Hello World 3!"},
+{"name":"Anna","message":"Hello World 4!"}
