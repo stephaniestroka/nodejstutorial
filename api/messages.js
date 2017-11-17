@@ -1,30 +1,29 @@
 const fs = require('fs');
 const path = require('path');
+const sqlite3 = require('sqlite3').verbose();
 
-const messagesFile = path.resolve(__dirname, 'messages.txt');
+const db = new sqlite3.Database('./tutorial.db');
 
-function createMessagesFile() {
-    fs.openSync(messagesFile, 'w');
-}
+db.get("SELECT COUNT(*) AS tableCount FROM sqlite_master WHERE type='table' AND name='messages';", [], (err, row) => {
+    if (err) throw err;
+    if (row.tableCount == 0) {
+        db.run('CREATE TABLE messages (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, message TEXT)');
+    }
+});
 
 exports.addMessage = function(message) {
-    console.log("Message: " + message);
-    if (!fs.existsSync(messagesFile)) {
-        createMessagesFile();
-    } else {
-        fs.appendFileSync(messagesFile, ',\n');
-    }
-    fs.appendFile(messagesFile, JSON.stringify(message), function (err) {
+    var sql = "INSERT INTO messages (name, message) VALUES (?, ?)";
+    db.run(sql, [message.name, message.message], function(err){
         if (err) throw err;
-        console.log('Saved!');
     });
 }
 
-exports.getMessages = function() {
-    if (!fs.existsSync(messagesFile)) {
-        console.log("Could not find " + messagesFile);
-        return "";
-    } else {
-        return fs.readFileSync(messagesFile);
-    }
+exports.getMessages = function(onresult) {
+    db.all("SELECT * FROM messages", [], (err, rows) => {
+        if (err) throw err;
+        rows.forEach((row) => {
+            console.log(row.name);
+        });
+        onresult(rows);
+    });
 };

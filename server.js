@@ -9,7 +9,9 @@ const app = express();
 app.use(express.static('public'))
 
 app.get('/api/messages', function (req, res) {
-    res.send('[' + messages.getMessages() + ']')
+    messages.getMessages(function (rows) {
+        res.send(rows);
+    })
 })
 
 app.use(bodyParser.json());
@@ -18,4 +20,4 @@ app.post("/api/messages", function (req, res) {
     res.sendStatus(200);
 });
 
-app.listen(8080, () => console.log('Example app listening on port 8080!'))
+app.listen(8080, () => console.log('App listening on port 8080!'))

@@ -24,17 +24,6 @@
       "resolved": "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz",
       "version": "1.0.0"
     },
-    "mysql": {
-      "integrity": "sha512-C7tjzWtbN5nzkLIV+E8Crnl9bFyc7d3XJcBAvHKEVkjrYjogz3llo22q6s/hw+UcsE4/844pDob9ac+3dVjQSA==",
-      "requires": {
-        "bignumber.js": "4.0.4",
-        "readable-stream": "2.3.3",
-        "safe-buffer": "5.1.1",
-        "sqlstring": "2.3.0"
-      },
-      "resolved": "https://registry.npmjs.org/mysql/-/mysql-2.15.0.tgz",
-      "version": "2.15.0"
-    },
     "process-nextick-args": {
       "integrity": "sha1-FQ4gt1ZZCtP5EJPyWk8q2L/zC6M=",
       "resolved": "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-1.0.7.tgz",
@@ -59,6 +48,7 @@
       "resolved": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.1.tgz",
       "version": "5.1.1"
     },
+    "sqlite3": "^3.1.13",
     "sqlstring": {
       "integrity": "sha1-UluKT9Jtb3GqYegipsr5dtMa0qg=",
       "resolved": "https://registry.npmjs.org/sqlstring/-/sqlstring-2.3.0.tgz",
