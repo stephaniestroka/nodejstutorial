@@ -4,6 +4,8 @@ const messages = require('./api/messages');
 const express = require('express');
 const bodyParser = require('body-parser')
 
+const port = process.env.PORT || 5000
+
 const app = express();
 
 app.use(express.static('public'))
@@ -26,4 +28,4 @@ app.post("/api/messages", function (req, res) {
     res.sendStatus(200);
 });
 
-app.listen(8080, () => console.log('App listening on port 8080!'));
+app.listen(port, () => console.log('App listening on port ${port}!'));
