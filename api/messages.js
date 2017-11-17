@@ -21,9 +21,6 @@ exports.addMessage = function(message) {
 exports.getMessages = function(onresult) {
     db.all("SELECT * FROM messages", [], (err, rows) => {
         if (err) throw err;
-        rows.forEach((row) => {
-            console.log(row.name);
-        });
         onresult(rows);
     });
 };
