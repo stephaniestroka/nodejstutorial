@@ -3,7 +3,6 @@
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
-var myApi = require('./api/controller');
 
 function returnFile(res, filename) {
     fs.readFile(filename, function(err, data) {
@@ -15,17 +14,12 @@ function returnFile(res, filename) {
 
 http.createServer(function (req, res) {
     var q = url.parse(req.url, true);
-    var pathname = q.pathname;
-    console.log("Looking for " + pathname);
-
-    if (pathname.startsWith("/api")) {
-        myApi.handleCall(req, res);
+    var filename = "." + q.pathname;
+    console.log("Looking for " + filename);
+    
+    if (!fs.existsSync(filename) || !fs.lstatSync(filename).isFile()) {
+        returnFile(res, 'index.html');
     } else {
-        var filename = "." + pathname;
-        if (!fs.existsSync(filename) || !fs.lstatSync(filename).isFile()) {
-            returnFile(res, 'index.html');
-        } else {
-            returnFile(res, filename);
-        }
+        returnFile(res, filename);
     }
 }).listen(8080);
