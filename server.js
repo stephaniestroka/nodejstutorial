@@ -4,7 +4,7 @@ const messages = require('./api/messages');
 const express = require('express');
 const bodyParser = require('body-parser')
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 8080
 
 const app = express();
 
@@ -22,10 +22,10 @@ app.get('/api/messages', function (req, res) {
     })
 })
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 app.post("/api/messages", function (req, res) {
     messages.addMessage(req.body);
     res.sendStatus(200);
 });
 
-app.listen(port, () => console.log('App listening on port ${ port }!'));
+app.listen(port, () => console.log('App listening on port ' + port + '!'));
