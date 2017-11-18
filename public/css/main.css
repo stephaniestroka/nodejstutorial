@@ -1,0 +1,11 @@
+.name {
+    font-size: 12px;
+}
+
+.message-group {
+    padding: 10px 0;
+}
+
+#messages {
+    margin-bottom: 40px;
+}
