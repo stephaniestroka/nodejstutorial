@@ -1,42 +1,60 @@
 <html>
+    <!-- The title, meta-data and references to other resources go into the <head> tag. -->
     <head>
+        <!-- This will appear as a title on the tab. -->
         <title>First try</title>
-        <!-- Bootstrap -->
-        <!-- Latest compiled and minified CSS -->
+        <!-- The link tag includes external resources. In this case, we include the bootstrap toolkit (https://getbootstrap.com/) -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <!-- We include our own stylesheet afterwards, thereby overriding the changes that bootstrap makes to the document. -->
         <link rel="stylesheet" href="css/main.css">
     </head>
+    <!-- Everything that is considered the content of the webpage goes into the <body> tag. -->
     <body>
+        <!-- This is a first div section. The class 'container', defined by bootstrap, gives us spacing on the sides. -->
         <div class="container">
+            <!-- The biggest headline. -->
             <h1>Hello World!</h1>
+            <!-- An image that can be found at the path images/mickey.png. -->
             <img src="images/mickey.png">
+            <!-- A paragraph -->
             <p>Hooray, we are learning how to build a web page!</p>
-            <p>To find more HTML tags, we can check out the <a href="https://www.w3schools.com/html/default.asp">W3C school</a></p>
-            <!--form action="javascript:void(0)">
+            <!-- Another paragraph that contains a link to the w3school. -->
+            <p>To find more HTML tags, we can check out the <a href="https://www.w3schools.com/html/default.asp" target="_blank">W3C school</a></p>
+            <!-- A form that we will eventually submit with JavaScript. -->
+            <form action="javascript:void(0)">
+                <!-- A form group that groups the label and the input. -->
                 <div class="form-group">
                     <label>Name:</label>
+                    <!-- A single-line textual input with the id 'name'. -->
                     <input id="name" type="text" class="form-control" name="name" value="">
                 </div>
                 <div class="form-group">
                     <label>Message:</label>
+                    <!-- A multi-line textual input with the id 'message'. -->
                     <textarea class="form-control" id="message"></textarea>
                 </div>
+                <!-- A button with the id 'submit'. -->
                 <button id="submit" class="btn btn-primary" type="submit">Submit</button>
-            </form-->
+            </form>
             <div>
+                <!-- A smaller headline. -->
                 <h3>Messages: </h3>
+                <!-- A div with the id 'messages'. Our messages will appear in here. -->
                 <div id="messages">
                 </div>
             </div>
         </div>
+        <!-- Includes the jQuery javaScript library. It is used by our script and by bootstrap. -->
         <script
           src="https://code.jquery.com/jquery-3.2.1.min.js"
           integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
           crossorigin="anonymous"></script>
+        <!-- Includes the popper javaScript library. This one is used by bootstrap. -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <!-- Bootstraps JavaScript library -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
+        <!-- Our own javaScript, which must come after the jQuery library, because we are making use of it. -->
         <script src="js/index.js"></script>
     </body>
 </html>

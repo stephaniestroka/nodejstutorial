@@ -1,11 +1,14 @@
+/* All elements with class 'name' will have a font-size of 12px. */
 .name {
     font-size: 12px;
 }
 
+/* All elements with class 'message-froup' will have a vertical spacing inside of the box (= padding) of 10px and a horizontal padding of 0px. */
 .message-group {
     padding: 10px 0;
 }
 
+/* The element with the id 'messages' will have a spacing outside of the box (= margin) at the bottom. */
 #messages {
     margin-bottom: 40px;
 }
