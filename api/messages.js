@@ -19,7 +19,7 @@ exports.addMessage = function(message) {
 }
 
 exports.getMessages = function(onresult) {
-    db.all("SELECT name, message FROM messages ORDER BY datetime(\"date\") DESC LIMIT 15", [], (err, rows) => {
+    db.all("SELECT name, message FROM messages ORDER BY datetime(\"date\") DESC LIMIT 20", [], (err, rows) => {
         if (err) throw err;
         onresult(rows);
     });
